@@ -434,7 +434,9 @@ class CurlerRequest
      */
     public function auth($username, $password)
     {
-        $this->options[CURLOPT_USERPWD] = sprintf("%s:%s", $username, $password);
+        $this->headers['X-ClickHouse-User'] = $username;
+        $this->headers['X-ClickHouse-Key'] = $password;
+
         return $this;
     }
 
